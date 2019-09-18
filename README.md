@@ -17,7 +17,7 @@ This challenges starts your job application at bornlogic.
 After you are done, we will review your code, give you feedback and proceed to the next steps of your job application.
 
 ## tips
-It’s natural to feel stressed during a test, so don’t panic. We wrote down some 'old but gold' tips that may calm you down.
+It’s natural to feel stressed during a test, so don’t panic. We wrote down some good old tips that may calm you down.
 
 - [ ] Relax yourself mentally and physically
 - [ ] Consider alternative solutions
