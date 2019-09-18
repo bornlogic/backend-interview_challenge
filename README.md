@@ -1,6 +1,9 @@
+
 # Interview-Code-Challenge
 
-{{bornlogic tech briefing}}
+**bornlogic** is a technology startup focused on building digital marketing products. We build a platform to orchestrate thousands of teams creating content everyday. Also, our technology stack handles millions of transactions per day!
+
+We work with people sharing a passion to build technology products as part of a great team of engineers and some of the greatest customers.
 
 ## Who we want on our Team
 
@@ -30,9 +33,7 @@ It’s natural to feel stressed during a test, so don’t panic. We wrote down s
 Let's pretend we launched the new "Social Media for the Illuminati Secret Society". 
 Your first objective as a backend developer is to help us grow our socialmedia API stack, by building new functionalities.
 
-
 > Keep Calm, do as much as you can, but notice you will have up to 7 days to complete the challenge.
-
 
 ## Developmenty Requirements
 
@@ -57,13 +58,13 @@ Provide a way to access this function publicly. It should be a Web API and a com
 
 ## Step Three
 
-check this {{swagger link}}
+First of all, check [this swagger link](http://www.)
 
 Start the product development following those requirements:
 
 - The following fields from the request must be stored locally: 'Name', 'Date of birth' and 'Notes'.
 - Every person also has a counter of how many times they have displayed in the social platform from external API.
-- Only Illuminati can access those API, thus it's necessary to send a matrix of numbers (member signature) in a header called ´itanimulli´. If authentication fails, a 404 status code must be returned (not a 403 as correct approach), keeping it secret from eavesdroppers.
+- Only Illuminati can access those API, thus it's necessary to send a matrix of numbers (member signature) in a header called ´itanimulli´.
 - The API must be REST.
 
 It would be great to see these methods, but we would love to hear your proposed list:
@@ -76,7 +77,7 @@ It would be great to see these methods, but we would love to hear your proposed 
 
 ## BONUS
 
-- Use best practices notes in 12-factors manifest (https://12factor.net)
+- Use best practices notes in [12-factors manifest](https://12factor.net) 
 - Deploy and share it on a cloud service: Azure, Amazon Web Services, or Google Cloud Plataform 
 - Create a docker image
 - Use of Behavior Driven Development (BDD) and/or Test Driven Development (TDD)
