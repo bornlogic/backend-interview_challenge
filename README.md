@@ -7,11 +7,9 @@ We work with people sharing a passion to build technology products as part of a 
 
 ## Who we want on our Team
 
-We love innovators!
-We are looking for entry level engineers to learn and practice software development.
-We work hard, play hard and thrive at bornlogic, if you belong to startup way of life, for sure, this is a perfect opportunity!
-We want to work with people that build such cool products that they will be proud to show them to their friends and family!
+We work hard, play hard and thrive at **bornlogic**, if you belong to startup way of life, for sure, this is a perfect opportunity!
 
+High skilled people that build such cool products that they are proud to show them to their friends and family will be welcome! We are also looking for entry-level engineers to learn and practice software development.
 
 ## What should you expect in this code challenge?
 
