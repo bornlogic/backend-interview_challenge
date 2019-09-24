@@ -48,7 +48,12 @@ Your first objective as a backend developer is to help us grow our socialmedia A
 ### Step One 
 
 Build a function to validate if a square matrix (NxN) is a 'triangular matrix'. 
-{{image}}
+
+![alt This matrix is upper triangular](https://wikimedia.org/api/rest_v1/media/math/render/svg/d2ed83943adf49954804bdfa12ca1bb4b278a64d)
+This matrix is upper triangular
+
+![alt This matrix is low triangular](https://wikimedia.org/api/rest_v1/media/math/render/svg/3fc7115ee860d2758e890e4de5217aafb89d90e6)
+This matrix is lower triangular.
 
 ## Step Two
 
