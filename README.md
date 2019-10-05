@@ -1,4 +1,5 @@
 
+
 # Interview-Code-Challenge
 
 **bornlogic** is a technology startup focused on building digital marketing products. We build a platform to orchestrate thousands of teams creating content everyday. Also, our technology stack handles millions of transactions per day!
@@ -61,7 +62,98 @@ Provide a way to access this function publicly. It should be a Web API and a com
 
 ## Step Three
 
-First of all, check [this swagger link](http://www.)
+It's show time. You should access this API:
+
+https://us-east4-sandbox-254919.cloudfunctions.net/interview-code-challenge-api
+
+Response example:
+
+     {
+        "people": [
+            {
+                "summary_metrics": {
+                    "posts": [
+                        {
+                            "photo": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 495,
+                                    "likes": 5466,
+                                    "shares": 1445
+                                }
+                            },
+                            "video": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 1528,
+                                    "completed_view": 9106,
+                                    "likes": 6258
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Name": "Jhon Doe",
+                "DateOfBirth": "1985-02-02",
+                "Notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu tortor, ornare eget ..."
+            },
+            {
+                "summary_metrics": {
+                    "posts": [
+                        {
+                            "photo": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 8047,
+                                    "likes": 9947,
+                                    "shares": 1445
+                                }
+                            },
+                            "video": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 8287,
+                                    "completed_view": 9106,
+                                    "likes": 2888
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Name": "Franky Kelley",
+                "DateOfBirth": "1976-10-05",
+                "Notes": "Nulla quis purus odio. Suspendisse aliquet vehicula leo, sed dignissim dolor pellentesque ..."
+            },
+            {
+                "summary_metrics": {
+                    "posts": [
+                        {
+                            "photo": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 2790,
+                                    "likes": 3015,
+                                    "shares": 1445
+                                }
+                            },
+                            "video": {
+                                "URL": "http://medias-challenge.com/media.jpeg",
+                                "Metrics": {
+                                    "clicks": 5541,
+                                    "completed_view": 9106,
+                                    "likes": 408
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Name": "Lacie Scott",
+                "DateOfBirth": "1999-07-12",
+                "Notes": "Integer nec tellus suscipit, vestibulum urna at, iaculis nisl. Maecenas ante est..."
+            }
+        ]
+    }
+
 
 Start the product development following those requirements:
 
