@@ -1,6 +1,6 @@
 
 
-# Interview-Code-Challenge
+# Interview backend code challenge
 
 **bornlogic** is a technology startup focused on building digital marketing products. We build a platform to orchestrate thousands of teams creating content everyday. Also, our technology stack handles millions of transactions per day!
 
@@ -14,9 +14,12 @@ High skilled people that build such cool products that they are proud to show th
 
 ## What should you expect in this code challenge?
 
-This challenges starts your job application at bornlogic.
+This challenges starts your job application at bornlogic. 
+
+You have to create a new issue requesting your token access.
 
 After you are done, we will review your code, give you feedback and proceed to the next steps of your job application.
+
 
 ## tips
 It’s natural to feel stressed during a test, so don’t panic. We wrote down some good old tips that may calm you down.
@@ -26,6 +29,7 @@ It’s natural to feel stressed during a test, so don’t panic. We wrote down s
 - [ ] If you are stuck, start with the brute force solution
 - [ ] Plan out the full solution before you code
 - [ ] Keep the big picture in mind
+
 
 # Let's get started 
 
