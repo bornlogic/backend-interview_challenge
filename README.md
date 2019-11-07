@@ -30,6 +30,9 @@ It’s natural to feel stressed during a test, so don’t panic. We wrote down s
 - [ ] Plan out the full solution before you code
 - [ ] Keep the big picture in mind
 
+# How can I apply for this oportunity?
+Fork this repository and pull request your solution. 
+You can open an issue at any time if you have any questions.
 
 # Let's get started 
 
