@@ -41,7 +41,7 @@ Your first objective as a backend developer is to help us grow our socialmedia A
 
 > Keep Calm, do as much as you can, but keep in mind that you have up to 7 days to complete the challenge.
 
-## Developmenty Requirements
+## Development Requirements
 
 ### Which technologies can I use?
 - C#, Go, Kotlin
