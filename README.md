@@ -4,17 +4,17 @@
 
 **bornlogic** is a technology startup focused on building digital marketing products. We build a platform to orchestrate thousands of teams creating content everyday. Also, our technology stack handles millions of transactions per day!
 
-We work with people sharing a passion to build technology products as part of a great team of engineers and some of the greatest customers.
+We work with people that are passionated about technology, forming a great team of engineers and valuable customers.
 
 ## Who we want on our Team
 
-We work hard, play hard and thrive at **bornlogic**, if you belong to startup way of life, for sure, this is a perfect opportunity!
+We work hard, play hard and thrive at bornlogic! if you belong to startup way of life, for sure this is a perfect opportunity!
 
-High skilled people that build such cool products that they are proud to show them to their friends and family will be welcome! We are also looking for entry-level engineers to learn and practice software development.
+We welcome highly skilled people who want to build amazing products and will be proud to show them to their friends and family! We are also looking for entry-level engineers who want to learn and practice software development using the best practices used by many players in the marketfield.
 
 ## What should you expect in this code challenge?
 
-This challenges starts your job application at bornlogic. 
+This challenge is the begninning of your job application at bornlogic. 
 
 You have to create a new issue requesting your token access.
 
@@ -37,15 +37,15 @@ You can open an issue at any time if you have any questions.
 # Let's get started 
 
 Let's pretend we launched the new "Social Media for the Illuminati Secret Society". 
-Your first objective as a backend developer is to help us grow our socialmedia API stack, by building new functionalities.
+Your first objective as a backend developer is to help us grow our socialmedia API stack by building new functionalities.
 
-> Keep Calm, do as much as you can, but notice you will have up to 7 days to complete the challenge.
+> Keep Calm, do as much as you can, but keep in mind that you have up to 7 days to complete the challenge.
 
-## Developmenty Requirements
+## Development Requirements
 
 ### Which technologies can I use?
 - C#, Go, Kotlin
-- Beginners can do it using Python
+- Beginners can use Python
 - NoSQL (MongoDB, DynamoDB, Elasticsearch)
 - SQL (Postgres, CockroachDB)
 - Graph (Neo4J, DGraph)
@@ -65,11 +65,11 @@ This matrix is lower triangular.
 
 ## Step Two
 
-Provide a way to access this function publicly. It should be a Web API and a command line interface (CLI).
+Provide a way to access this function publicly. It should have both a Web REST API and a command line interface (CLI).
 
 ## Step Three
 
-It's show time. You should access this API:
+It's show time! You should access this API:
 
 https://us-east4-sandbox-254919.cloudfunctions.net/interview-code-challenge-api
 
@@ -162,12 +162,11 @@ Response example:
     }
 
 
-Start the product development following those requirements:
+Now you can start the product development following these requirements:
 
 - The following fields from the request must be stored locally: 'Name', 'Date of birth' and 'Notes'.
 - Every person also has a counter of how many times they have displayed in the social platform from external API.
-- Only Illuminati can access those API, thus it's necessary to send a matrix of numbers (member signature) in a header called ´itanimulli´.
-- The API must be REST.
+- Only Illuminati can access those API, so it's necessary to send a matrix of numbers (member signature) in a header called ´itanimulli´.
 
 It would be great to see these methods, but we would love to hear your proposed list:
 - Invite a new illuminati member
