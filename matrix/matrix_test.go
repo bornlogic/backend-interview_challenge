@@ -59,3 +59,47 @@ func TestIsSquare(t *testing.T) {
 	testAre(t, testIsSquare, matrix.IsSquare)
 }
 
+var testIsDiagonal = Are{
+	{
+		"one more element in upper",
+		matrix.Matrix{
+			{1, 0, 0},
+			{0, 8, 1},
+			{0, 0, 7},
+		},
+		false,
+	},
+	{
+		"one more element in lower",
+		matrix.Matrix{
+			{1, 1, 0},
+			{0, 8, 0},
+			{0, 1, 7},
+		},
+		false,
+	},
+	{
+		"is",
+		matrix.Matrix{
+			{1, 0, 0},
+			{0, 8, 0},
+			{0, 0, 7},
+		},
+		true,
+	},
+	{
+		"is with many zero",
+		matrix.Matrix{
+			{0, 0, 0},
+			{0, 1, 0},
+			{0, 0, 1},
+		},
+		true,
+	},
+}
+
+func TestIsDiagonal(t *testing.T) {
+	testAre(t, testIsDiagonal, matrix.IsDiagonal)
+}
+
+

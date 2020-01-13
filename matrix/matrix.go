@@ -16,5 +16,23 @@ func IsSquare(m Matrix) bool {
 	return true
 }
 
+// IsDiagonal checks if is a diagonal matrix
+func IsDiagonal(m Matrix) bool {
+	if !IsSquare(m) {
+		return false
+	}
+	for i, line := range m {
+		for j, v := range line {
+			if i != j && v != 0 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+
+
+
 
 
