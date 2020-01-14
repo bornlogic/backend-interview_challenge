@@ -6,15 +6,15 @@ import (
 )
 
 
-// Are is the abstraction of multiple checks if matrix is
-type Are []struct{
+// Cases is the abstraction of multiple checks if matrix is
+type Cases []struct{
 	name string
 	m  matrix.Matrix
 }
 
-// testAre test a check function over Are and check if returns the expected boolean
-func testAre(t *testing.T, a Are, f func(m matrix.Matrix) bool, expectedOk bool) {
-	for _, tt := range a {
+// testCases test a check function over Cases and check if returns the expected boolean
+func testCases(t *testing.T, cs Cases, f func(m matrix.Matrix) bool, expectedOk bool) {
+	for _, tt := range cs {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
@@ -26,7 +26,7 @@ func testAre(t *testing.T, a Are, f func(m matrix.Matrix) bool, expectedOk bool)
 	}
 }
 
-var testInvalid = Are{
+var testInvalid = Cases{
 	{
 		"empty",
 		matrix.Matrix{},
@@ -38,7 +38,7 @@ var testInvalid = Are{
 
 }
 
-var testIsSquare = Are{
+var testIsSquare = Cases{
 	{
 		"square 2x2",
 		matrix.Matrix{
@@ -55,7 +55,7 @@ var testIsSquare = Are{
 	},
 }
 
-var testNotIsSquare = Are{
+var testNotIsSquare = Cases{
 	{
 		"missing line",
 		matrix.Matrix{
@@ -74,13 +74,13 @@ var testNotIsSquare = Are{
 }
 
 func TestIsSquare(t *testing.T) {
-	testAre(t, testInvalid, matrix.IsSquare, false)
+	testCases(t, testInvalid, matrix.IsSquare, false)
 
-	testAre(t, testIsSquare, matrix.IsSquare, true)
-	testAre(t, testNotIsSquare, matrix.IsSquare, false)
+	testCases(t, testIsSquare, matrix.IsSquare, true)
+	testCases(t, testNotIsSquare, matrix.IsSquare, false)
 }
 
-var testNotIsDiagonal = Are{
+var testNotIsDiagonal = Cases{
 	{
 		"one more element in upper",
 		matrix.Matrix{
@@ -99,7 +99,7 @@ var testNotIsDiagonal = Are{
 	},
 }
 
-var testIsDiagonal = Are{
+var testIsDiagonal = Cases{
 	{
 		"diagonal only numbers",
 		matrix.Matrix{
@@ -119,14 +119,14 @@ var testIsDiagonal = Are{
 }
 
 func TestIsDiagonal(t *testing.T) {
-	testAre(t, testInvalid, matrix.IsDiagonal, false)
-	testAre(t, testNotIsSquare, matrix.IsDiagonal, false)
+	testCases(t, testInvalid, matrix.IsDiagonal, false)
+	testCases(t, testNotIsSquare, matrix.IsDiagonal, false)
 
-	testAre(t, testIsDiagonal, matrix.IsDiagonal, true)
-	testAre(t, testNotIsDiagonal, matrix.IsDiagonal, false)
+	testCases(t, testIsDiagonal, matrix.IsDiagonal, true)
+	testCases(t, testNotIsDiagonal, matrix.IsDiagonal, false)
 }
 
-var testNotIsUpperTriangular = Are{
+var testNotIsUpperTriangular = Cases{
 	{
 		"one more element in lower",
 		matrix.Matrix{
@@ -145,7 +145,7 @@ var testNotIsUpperTriangular = Are{
 	},
 }
 
-var testIsUpperTriangular = Are{
+var testIsUpperTriangular = Cases{
 	{
 		"upper only numbers",
 		matrix.Matrix{
@@ -165,14 +165,14 @@ var testIsUpperTriangular = Are{
 }
 
 func TestIsUpperTriangular(t *testing.T) {
-	testAre(t, testInvalid, matrix.IsUpperTriangular, false)
-	testAre(t, testNotIsSquare, matrix.IsUpperTriangular, false)
+	testCases(t, testInvalid, matrix.IsUpperTriangular, false)
+	testCases(t, testNotIsSquare, matrix.IsUpperTriangular, false)
 
-	testAre(t, testIsUpperTriangular, matrix.IsUpperTriangular, true)
-	testAre(t, testNotIsUpperTriangular, matrix.IsUpperTriangular, false)
+	testCases(t, testIsUpperTriangular, matrix.IsUpperTriangular, true)
+	testCases(t, testNotIsUpperTriangular, matrix.IsUpperTriangular, false)
 }
 
-var testNotIsLowerTriangular = Are{
+var testNotIsLowerTriangular = Cases{
 	{
 		"one more element in upper",
 		matrix.Matrix{
@@ -191,7 +191,7 @@ var testNotIsLowerTriangular = Are{
 	},
 }
 
-var testIsLowerTriangular = Are{
+var testIsLowerTriangular = Cases{
 	{
 		"lower only numbers",
 		matrix.Matrix{
@@ -211,14 +211,14 @@ var testIsLowerTriangular = Are{
 }
 
 func TestIsLowerTriangular(t *testing.T) {
-	testAre(t, testInvalid, matrix.IsLowerTriangular, false)
-	testAre(t, testNotIsSquare, matrix.IsLowerTriangular, false)
+	testCases(t, testInvalid, matrix.IsLowerTriangular, false)
+	testCases(t, testNotIsSquare, matrix.IsLowerTriangular, false)
 
-	testAre(t, testIsLowerTriangular, matrix.IsLowerTriangular, true)
-	testAre(t, testNotIsLowerTriangular, matrix.IsLowerTriangular, false)
+	testCases(t, testIsLowerTriangular, matrix.IsLowerTriangular, true)
+	testCases(t, testNotIsLowerTriangular, matrix.IsLowerTriangular, false)
 }
 
-var testNotIsTriangular = Are{
+var testNotIsTriangular = Cases{
 	{
 		"full numbers",
 		matrix.Matrix{
@@ -239,18 +239,18 @@ var testNotIsTriangular = Are{
 }
 
 func TestIsTriangular(t *testing.T) {
-	testAre(t, testInvalid, matrix.IsTriangular, false)
-	testAre(t, testNotIsSquare, matrix.IsTriangular, false)
+	testCases(t, testInvalid, matrix.IsTriangular, false)
+	testCases(t, testNotIsSquare, matrix.IsTriangular, false)
 
-	testAre(t, testIsDiagonal, matrix.IsTriangular, true)
-	testAre(t, testIsUpperTriangular, matrix.IsTriangular, true)
-	testAre(t, testIsLowerTriangular, matrix.IsTriangular, true)
+	testCases(t, testIsDiagonal, matrix.IsTriangular, true)
+	testCases(t, testIsUpperTriangular, matrix.IsTriangular, true)
+	testCases(t, testIsLowerTriangular, matrix.IsTriangular, true)
 
-	testAre(t, testNotIsTriangular, matrix.IsTriangular, false)
+	testCases(t, testNotIsTriangular, matrix.IsTriangular, false)
 }
 
 func BenchmarkIsTriangular(b *testing.B) {
-	benchmarks := []Are{
+	benchmarkCases := []Cases{
 		testInvalid,
 		testNotIsSquare,
 		testIsDiagonal,
@@ -258,8 +258,8 @@ func BenchmarkIsTriangular(b *testing.B) {
 		testIsLowerTriangular,
 		testNotIsTriangular,
 	}
-	for _, are := range benchmarks {
-		for _, bm := range are {
+	for _, cases := range benchmarkCases {
+		for _, bm := range cases {
 			b.Run(bm.name, func(b *testing.B) {
 				for n := 0; n < b.N; n++ {
 					matrix.IsTriangular(bm.m)
