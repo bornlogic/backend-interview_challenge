@@ -7,14 +7,15 @@ type (
 
 // IsTriangular checks if is a triangular matrix
 func IsTriangular(m Matrix) bool {
-	if !IsSquare(m) {
-		return false
-	}
 	return IsDiagonal(m) || IsUpperTriangular(m) || IsLowerTriangular(m)
 }
 
 // IsSquare checks if is a square matrix
 func IsSquare(m Matrix) bool {
+	// do not accept empty or nil matrix
+	if len(m) == 0 {
+		return false
+	}
 	nLine := len(m)
 	for _, line := range m {
 		nColumn := len(line)
@@ -55,7 +56,7 @@ func IsUpperTriangular(m Matrix) bool {
 	return true
 }
 
-// IsLowerTriangular checks if is a upper triangular matrix
+// IsLowerTriangular checks if is a lower triangular matrix
 func IsLowerTriangular(m Matrix) bool {
 	if !IsSquare(m) {
 		return false

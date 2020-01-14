@@ -10,30 +10,58 @@ import (
 type Are []struct{
 	name string
 	m  matrix.Matrix
-	is bool
 }
 
-func testAre(t *testing.T, a Are, f func(m matrix.Matrix) bool) {
+// testAre test a check function over Are and check if returns the expected boolean
+func testAre(t *testing.T, a Are, f func(m matrix.Matrix) bool, expectedOk bool) {
 	for _, tt := range a {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			is := f(tt.m)
-			if is != tt.is {
-				t.Fatalf("Got: %t, Want: %t", is, tt.is)
+			ok := f(tt.m)
+			if expectedOk != ok {
+				t.Fatalf("Got: %t, Want: %t", ok, expectedOk)
 			}
 		})
 	}
 }
 
+var testInvalid = Are{
+	{
+		"empty",
+		matrix.Matrix{},
+	},
+	{
+		"nil",
+		nil,
+	},
+
+}
+
 var testIsSquare = Are{
+	{
+		"square 2x2",
+		matrix.Matrix{
+			{1, 2},
+			{1, 2},
+		},
+	}, {
+		"square 3x3",
+		matrix.Matrix{
+			{1, 2, 3},
+			{1, 2, 3},
+			{1, 2, 3},
+		},
+	},
+}
+
+var testNotIsSquare = Are{
 	{
 		"missing line",
 		matrix.Matrix{
 			{1, 2, 3},
 			{1, 2, 3},
 		},
-		false,
 	},
 	{
 		"missing column",
@@ -42,24 +70,17 @@ var testIsSquare = Are{
 			{1, 2},
 			{1, 2},
 		},
-		false,
-	},
-	{
-		"is",
-		matrix.Matrix{
-			{1, 2, 3},
-			{1, 2, 3},
-			{1, 2, 3},
-		},
-		true,
 	},
 }
 
 func TestIsSquare(t *testing.T) {
-	testAre(t, testIsSquare, matrix.IsSquare)
+	testAre(t, testInvalid, matrix.IsSquare, false)
+
+	testAre(t, testIsSquare, matrix.IsSquare, true)
+	testAre(t, testNotIsSquare, matrix.IsSquare, false)
 }
 
-var testIsDiagonal = Are{
+var testNotIsDiagonal = Are{
 	{
 		"one more element in upper",
 		matrix.Matrix{
@@ -67,7 +88,6 @@ var testIsDiagonal = Are{
 			{0, 8, 1},
 			{0, 0, 7},
 		},
-		false,
 	},
 	{
 		"one more element in lower",
@@ -76,33 +96,37 @@ var testIsDiagonal = Are{
 			{0, 8, 0},
 			{0, 1, 7},
 		},
-		false,
 	},
+}
+
+var testIsDiagonal = Are{
 	{
-		"is",
+		"diagonal only numbers",
 		matrix.Matrix{
 			{1, 0, 0},
 			{0, 8, 0},
 			{0, 0, 7},
 		},
-		true,
 	},
 	{
-		"is with many zero",
+		"diagonal with zeros",
 		matrix.Matrix{
 			{0, 0, 0},
-			{0, 1, 0},
+			{0, 0, 0},
 			{0, 0, 1},
 		},
-		true,
 	},
 }
 
 func TestIsDiagonal(t *testing.T) {
-	testAre(t, testIsDiagonal, matrix.IsDiagonal)
+	testAre(t, testInvalid, matrix.IsDiagonal, false)
+	testAre(t, testNotIsSquare, matrix.IsDiagonal, false)
+
+	testAre(t, testIsDiagonal, matrix.IsDiagonal, true)
+	testAre(t, testNotIsDiagonal, matrix.IsDiagonal, false)
 }
 
-var testIsUpperTriangular = Are{
+var testNotIsUpperTriangular = Are{
 	{
 		"one more element in lower",
 		matrix.Matrix{
@@ -110,7 +134,6 @@ var testIsUpperTriangular = Are{
 			{0, 8, 0},
 			{0, 1, 7},
 		},
-		false,
 	},
 	{
 		"two more elements in lower",
@@ -119,33 +142,37 @@ var testIsUpperTriangular = Are{
 			{1, 8, 3},
 			{0, 1, 7},
 		},
-		false,
 	},
+}
+
+var testIsUpperTriangular = Are{
 	{
-		"is",
+		"upper only numbers",
 		matrix.Matrix{
 			{1, 4, 1},
 			{0, 6, 4},
 			{0, 0, 1},
 		},
-		true,
 	},
 	{
-		"is with many zeroes",
+		"upper with zeros",
 		matrix.Matrix{
 			{1, 0, 0},
 			{0, 8, 1},
 			{0, 0, 0},
 		},
-		true,
 	},
 }
 
 func TestIsUpperTriangular(t *testing.T) {
-	testAre(t, testIsUpperTriangular, matrix.IsUpperTriangular)
+	testAre(t, testInvalid, matrix.IsUpperTriangular, false)
+	testAre(t, testNotIsSquare, matrix.IsUpperTriangular, false)
+
+	testAre(t, testIsUpperTriangular, matrix.IsUpperTriangular, true)
+	testAre(t, testNotIsUpperTriangular, matrix.IsUpperTriangular, false)
 }
 
-var testIsLowerTriangular = Are{
+var testNotIsLowerTriangular = Are{
 	{
 		"one more element in upper",
 		matrix.Matrix{
@@ -153,7 +180,6 @@ var testIsLowerTriangular = Are{
 			{0, 8, 0},
 			{0, 1, 7},
 		},
-		false,
 	},
 	{
 		"two more elements in upper",
@@ -162,86 +188,83 @@ var testIsLowerTriangular = Are{
 			{1, 8, 3},
 			{0, 1, 7},
 		},
-		false,
 	},
+}
+
+var testIsLowerTriangular = Are{
 	{
-		"is",
+		"lower only numbers",
 		matrix.Matrix{
 			{1, 0, 0},
 			{2, 8, 0},
 			{4, 9, 7},
 		},
-		true,
 	},
 	{
-		"is with many zeroes",
+		"lower with zeros",
 		matrix.Matrix{
 			{1, 0, 0},
 			{0, 3, 0},
 			{0, 1, 0},
 		},
-		true,
 	},
 }
 
 func TestIsLowerTriangular(t *testing.T) {
-	testAre(t, testIsLowerTriangular, matrix.IsLowerTriangular)
+	testAre(t, testInvalid, matrix.IsLowerTriangular, false)
+	testAre(t, testNotIsSquare, matrix.IsLowerTriangular, false)
+
+	testAre(t, testIsLowerTriangular, matrix.IsLowerTriangular, true)
+	testAre(t, testNotIsLowerTriangular, matrix.IsLowerTriangular, false)
 }
 
-
-
-var testIsTriangular = Are{
+var testNotIsTriangular = Are{
 	{
-		"one more element in upper and lower",
+		"full numbers",
 		matrix.Matrix{
-			{1, 1, 0},
-			{0, 8, 0},
-			{0, 1, 7},
+			{1, 2, 3},
+			{1, 2, 3},
+			{1, 2, 3},
 		},
-		false,
 	},
 	{
-		"two more elements in upper and lower",
+		"one more in upper and lower",
 		matrix.Matrix{
-			{1, 1, 0},
-			{1, 8, 3},
-			{0, 1, 7},
-		},
-		false,
-	},
-	{
-		"is lower",
-		matrix.Matrix{
-			{1, 0, 0},
-			{2, 8, 0},
-			{4, 9, 7},
-		},
-		true,
-	},
-	{
-		"is upper",
-		matrix.Matrix{
-			{1, 1, 0},
-			{0, 3, 0},
+			{1, 0, 3},
+			{1, 2, 0},
 			{0, 0, 0},
 		},
-		true,
 	},
-	{
-		"is diagonal",
-		matrix.Matrix{
-			{1, 0, 0},
-			{0, 3, 0},
-			{0, 0, 0},
-		},
-		true,
-	},
+
 }
 
 func TestIsTriangular(t *testing.T) {
-	testAre(t, testIsTriangular, matrix.IsTriangular)
+	testAre(t, testInvalid, matrix.IsTriangular, false)
+	testAre(t, testNotIsSquare, matrix.IsTriangular, false)
+
+	testAre(t, testIsDiagonal, matrix.IsTriangular, true)
+	testAre(t, testIsUpperTriangular, matrix.IsTriangular, true)
+	testAre(t, testIsLowerTriangular, matrix.IsTriangular, true)
+
+	testAre(t, testNotIsTriangular, matrix.IsTriangular, false)
 }
 
-
-
-
+func BenchmarkIsTriangular(b *testing.B) {
+	benchmarks := []Are{
+		testInvalid,
+		testNotIsSquare,
+		testIsDiagonal,
+		testIsUpperTriangular,
+		testIsLowerTriangular,
+		testNotIsTriangular,
+	}
+	for _, are := range benchmarks {
+		for _, bm := range are {
+			b.Run(bm.name, func(b *testing.B) {
+				for n := 0; n < b.N; n++ {
+					matrix.IsTriangular(bm.m)
+				}
+			})
+		}
+	}
+}
