@@ -5,6 +5,40 @@ import (
 	"github.com/iuryfukuda/ibcc/matrix"
 )
 
+func TestSet(t *testing.T) {
+	rawMatrix := `1,1,3
+1,3,"3"
+1,"1",1`
+	var m matrix.Matrix
+	err := m.Set(rawMatrix)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestSetMatrixErrors(t *testing.T) {
+	rawMatrix := `1,1,c
+1,3,3
+1,c,1`
+	var m matrix.Matrix
+	err := m.Set(rawMatrix)
+	errors, ok := err.(matrix.SetMatrixErrors)
+	if !ok {
+		t.Fatalf(
+			"unexpected type error returned: got: %T, want: %T",
+			err, *new(matrix.SetMatrixErrors),
+		)
+	}
+
+	expectedLen := 2
+	if count := len(errors); count != expectedLen {
+		t.Fatalf(
+			"unexpected len errors: got: %d, want: %d",
+			count, expectedLen,
+		)
+	}
+}
+
 // testCases test a check function over Cases and check if returns the expected boolean
 func testCases(t *testing.T, cs Cases, f func(m matrix.Matrix) bool, expectedOk bool) {
 	for _, tt := range cs {
@@ -13,7 +47,7 @@ func testCases(t *testing.T, cs Cases, f func(m matrix.Matrix) bool, expectedOk 
 			t.Parallel()
 			ok := f(tt.m)
 			if expectedOk != ok {
-				t.Fatalf("Got: %t, Want: %t", ok, expectedOk)
+				t.Fatalf("got: %t, want: %t", ok, expectedOk)
 			}
 		})
 	}

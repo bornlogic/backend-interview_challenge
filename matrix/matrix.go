@@ -1,9 +1,72 @@
 // matrix performs some checks about matrix types
 package matrix
 
-type (
-	Matrix [][]int
+import (
+	"fmt"
+	"strconv"
+	"strings"
+	"encoding/csv"
 )
+
+// Matrix is the main abstraction about type matrix of gemometry
+// implements "flag"
+type Matrix [][]int
+
+func(m Matrix) String() string {
+	var msg string
+	for _, line := range m {
+		for _, col := range line {
+			msg += fmt.Sprintf("%d,", col)
+		}
+		msg = strings.Trim(msg, ",") + "\n"
+	}
+	msg = strings.TrimSpace(msg)
+	return msg
+}
+
+type SetMatrixErrors []error
+func (es SetMatrixErrors) Error() string {
+	var msg string
+	for _, e := range es {
+		msg = msg + e.Error() + "\n"
+	}
+	msg = strings.TrimSpace(msg)
+	return msg
+}
+
+func (es *SetMatrixErrors) add(e error, i, j int) {
+	*es = append(*es, fmt.Errorf("(%d, %d): %s", i, j, e))
+}
+
+// Set convert csv string passed as string for matrix
+func (m *Matrix) Set (s string) error {
+	r := csv.NewReader(strings.NewReader(s))
+	strMatrix, err := r.ReadAll()
+	if err != nil {
+		return err
+	}
+
+	var errors SetMatrixErrors
+	var tmpMatrix = make(Matrix, len(strMatrix))
+	for i, line := range strMatrix {
+		tmpMatrix[i] = make([]int, len(line))
+		for j, col := range line {
+			n, err := strconv.Atoi(col)
+			if err != nil {
+				errors.add(err, i, j)
+				continue
+			}
+			tmpMatrix[i][j] = n
+		}
+	}
+	if len(errors) > 0 {
+		return errors
+	}
+
+	*m = tmpMatrix
+	return nil
+}
+
 
 // IsTriangular checks if is a triangular matrix
 func IsTriangular(m Matrix) bool {

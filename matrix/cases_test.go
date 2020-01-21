@@ -4,7 +4,14 @@ import (
 	"github.com/iuryfukuda/ibcc/matrix"
 )
 
-// Cases is the abstraction of multiple checks if matrix is
+// StrCases is the abstraction of cases of tests over string matrix
+type StrCases []struct{
+	name string
+	strM string
+	errType error
+}
+
+// Cases is the abstraction of cases of tests over matrix
 type Cases []struct{
 	name string
 	m  matrix.Matrix
