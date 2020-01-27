@@ -24,13 +24,13 @@ func(m Matrix) String() string {
 	return msg
 }
 
+// SetMatrixErrors is the abstraction about errors on set new matrix
 type SetMatrixErrors []error
 func (es SetMatrixErrors) Error() string {
 	var msg string
 	for _, e := range es {
-		msg = msg + e.Error() + "\n"
+		msg = msg + "\n " + e.Error()
 	}
-	msg = strings.TrimSpace(msg)
 	return msg
 }
 
@@ -59,6 +59,7 @@ func (m *Matrix) Set (s string) error {
 			tmpMatrix[i][j] = n
 		}
 	}
+
 	if len(errors) > 0 {
 		return errors
 	}
