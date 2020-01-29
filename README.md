@@ -1,6 +1,6 @@
 ![alt text](http://branding.bornlogic.com.s3-website-sa-east-1.amazonaws.com/static/files-download/logo/logo-roxo.svg 'Bornlogic')
 
-# Interview backend code challenge
+# Interview BACKEND code challenge
 
 **bornlogic** is a technology startup focused on building digital marketing products. We build a platform to orchestrate thousands of teams creating content everyday. Also, our technology stack handles millions of transactions per day!
 
