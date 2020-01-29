@@ -1,4 +1,4 @@
-
+![alt text](http://branding.bornlogic.com.s3-website-sa-east-1.amazonaws.com/static/files-download/logo/logo-roxo.svg 'Bornlogic')
 
 # Interview backend code challenge
 
