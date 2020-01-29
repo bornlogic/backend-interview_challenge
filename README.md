@@ -14,7 +14,7 @@ We welcome highly skilled people who want to build amazing products and will be 
 
 ## What should you expect in this code challenge?
 
-This challenge is the begninning of your job application at bornlogic. 
+This challenge is the beginning of your job application at bornlogic. 
 
 You have to create a new issue requesting your token access.
 
@@ -30,7 +30,7 @@ It’s natural to feel stressed during a test, so don’t panic. We wrote down s
 - [ ] Plan out the full solution before you code
 - [ ] Keep the big picture in mind
 
-# How can I apply for this oportunity?
+# How can I apply for this opportunity?
 Fork this repository and pull request your solution. 
 You can open an issue at any time if you have any questions.
 
