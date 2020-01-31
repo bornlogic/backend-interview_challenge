@@ -2,17 +2,17 @@
 package matrix
 
 import (
+	"encoding/csv"
 	"fmt"
 	"strconv"
 	"strings"
-	"encoding/csv"
 )
 
 // Matrix is the main abstraction about type matrix of gemometry
 // implements "flag"
 type Matrix [][]int
 
-func(m Matrix) String() string {
+func (m Matrix) String() string {
 	var msg string
 	for _, line := range m {
 		for _, col := range line {
@@ -26,6 +26,7 @@ func(m Matrix) String() string {
 
 // SetMatrixErrors is the abstraction about errors on set new matrix
 type SetMatrixErrors []error
+
 func (es SetMatrixErrors) Error() string {
 	var msg string
 	for _, e := range es {
@@ -39,7 +40,7 @@ func (es *SetMatrixErrors) add(e error, i, j int) {
 }
 
 // Set convert csv string passed as string for matrix
-func (m *Matrix) Set (s string) error {
+func (m *Matrix) Set(s string) error {
 	r := csv.NewReader(strings.NewReader(s))
 	strMatrix, err := r.ReadAll()
 	if err != nil {
@@ -67,7 +68,6 @@ func (m *Matrix) Set (s string) error {
 	*m = tmpMatrix
 	return nil
 }
-
 
 // IsTriangular checks if is a triangular matrix
 func IsTriangular(m Matrix) bool {

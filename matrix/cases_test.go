@@ -5,16 +5,16 @@ import (
 )
 
 // StrCases is the abstraction of cases of tests over string matrix
-type StrCases []struct{
-	name string
-	strM string
+type StrCases []struct {
+	name    string
+	strM    string
 	errType error
 }
 
 // Cases is the abstraction of cases of tests over matrix
-type Cases []struct{
+type Cases []struct {
 	name string
-	m  matrix.Matrix
+	m    matrix.Matrix
 }
 
 // casesInvalid join all inputs not considered matrix
@@ -27,7 +27,6 @@ var casesInvalid = Cases{
 		"nil",
 		nil,
 	},
-
 }
 
 // square matrix cases
@@ -201,5 +200,4 @@ var casesNotIsTriangular = Cases{
 			{0, 0, 0},
 		},
 	},
-
 }

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
-	"log"
 	"flag"
 	"io/ioutil"
+	"log"
+	"os"
 
 	"github.com/iuryfukuda/ibcc/matrix"
 )
@@ -13,7 +13,7 @@ var Matrix matrix.Matrix
 var TestIsTriangular bool
 var IsVerbose bool
 
-func main(){
+func main() {
 	flag.Parse()
 	log.SetPrefix("testMatrix: ")
 
@@ -45,7 +45,7 @@ func init() {
 	flag.Var(&Matrix, "m", usageMatrix+" (shorthand)")
 
 	const (
-		usageTestIsTriangular = "test if given matrix is triangular"
+		usageTestIsTriangular   = "test if given matrix is triangular"
 		defaultTestIsTriangular = false
 	)
 	flag.BoolVar(
@@ -58,11 +58,9 @@ func init() {
 	)
 
 	const (
-		usageIsVerbose = "prints feedback of test in stderr"
+		usageIsVerbose   = "prints feedback of test in stderr"
 		defaultIsVerbose = false
 	)
 	flag.BoolVar(&IsVerbose, "verbose", defaultIsVerbose, usageIsVerbose)
 	flag.BoolVar(&IsVerbose, "v", defaultIsVerbose, usageIsVerbose+" (shorthand)")
 }
-
-

@@ -1,8 +1,8 @@
 package matrix_test
 
 import (
-	"testing"
 	"github.com/iuryfukuda/ibcc/matrix"
+	"testing"
 )
 
 func TestSet(t *testing.T) {
