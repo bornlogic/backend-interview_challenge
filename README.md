@@ -1,6 +1,6 @@
 # IBCC
 
-Ibcc - Interview backend code challenge - is a reposity with some lib and tools used for **bornlogic** test code
+Ibcc - Interview backend code challenge - is a reposity used for **bornlogic** challenge code
 
 ## Matrix
 
@@ -85,6 +85,8 @@ You can use tests of matrix by api.
 For this you send a json for `/testMatrix` api endpoint with test name and matrix for the server test.
 
 ### Schema
+
+https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
 
 ```json
 {
