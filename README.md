@@ -17,6 +17,7 @@ Matrix is a lib for perform some tests over passed matrix.
 ## TestMatrix
 
 TestMatrix is a cli tool for test over matrix passed as stdin or by arg.
+
 format used is csv, example:
 ```
 [[1,2,3],        1,2,3
@@ -27,6 +28,7 @@ format used is csv, example:
 ### Usage
 
 `exit 1` -> means test fails
+
 `exit 0` -> means test success or no test passed
 
 for more you can use `--help` flag:
@@ -72,14 +74,15 @@ Arg - not test passed (verbose)
 go run cmd/testMatrix/main.go -m $'0,5\n0,0' -v
 ```
 exit status 0
-print: "testMatrix: 2020/02/04 16:42:59 matrix is not triangular"
+
+example verbose: "testMatrix: 2020/02/04 16:42:59 matrix is not triangular"
 
 
 ## Api
 
 You can use tests of matrix by api.
 
-For this you send a json for "/testMatrix" api endpoint with test name and matrix for the server test.
+For this you send a json for `/testMatrix` api endpoint with test name and matrix for the server test.
 
 ### Schema
 
@@ -105,8 +108,9 @@ For this you send a json for "/testMatrix" api endpoint with test name and matri
 ### Feedback
 
 any case where is not a success returns a quoted string with description about error
+
 example: "invalid body: invalid character ']' after object key:value pair"
 
-200 - Valid matrix
-400 - Bad request (missing or typo)
-406 - Not Acceptable (invalid matrix, test fails)
+- 200 - Valid matrix
+- 400 - Bad request (missing or typo)
+- 406 - Not Acceptable (invalid matrix, test fails)
