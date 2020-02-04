@@ -32,9 +32,16 @@ func main() {
 	switch {
 	case TestIsTriangular:
 		if !matrix.IsTriangular(Matrix) {
+			if IsVerbose {
+				log.Print("matrix is not triangular")
+			}
 			os.Exit(1)
 		} else if IsVerbose {
 			log.Print("matrix is triangular")
+		}
+	default:
+		if IsVerbose {
+			log.Print("no test passed")
 		}
 	}
 }
