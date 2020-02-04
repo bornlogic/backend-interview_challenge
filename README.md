@@ -14,9 +14,9 @@ Matrix is a lib for perform some tests over passed matrix.
 - Is Diagonal
 - Is Square
 
-## TestMatrix
+## testMatrix
 
-TestMatrix is a cli tool for test over matrix passed as stdin or by arg.
+testMatrix is a cli tool for test over matrix passed as stdin or by arg.
 
 format used is csv, example:
 ```
