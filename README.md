@@ -4,7 +4,7 @@ Ibcc - Interview backend code challenge - is a reposity used for **bornlogic** c
 
 ## Matrix
 
-Matrix is a lib for perform some tests over passed matrix.
+Matrix is a lib for perform some tests over matrix.
 
 ### Tests
 
