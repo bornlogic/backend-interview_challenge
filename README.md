@@ -93,7 +93,7 @@ go run cmd/api/main.go
 
 ### Schema
 
-schema used in body for test matrix
+schema used in body for post in api
 
 spec: https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
 
