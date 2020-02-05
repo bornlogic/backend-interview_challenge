@@ -86,7 +86,9 @@ For this you send a json for `/testMatrix` api endpoint with test name and matri
 
 ### Schema
 
-https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
+schema used in body for test matrix
+
+spec: https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
 
 ```json
 {
