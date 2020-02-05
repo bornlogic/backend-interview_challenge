@@ -62,20 +62,20 @@ echo -e '0,5\n1,0' | go run cmd/testMatrix/main.go --triangular
 exit status 1
 
 
-Arg - matrix is triangular (verbose)
+Arg - matrix is not triangular (verbose)
 ```bash
-go run cmd/testMatrix/main.go -t --matrix $'0,5\n0,0' -v
+go run cmd/testMatrix/main.go -t --matrix $'0,5\n1,0' -v
+testMatrix: 2020/02/04 16:42:59 matrix is not triangular
 ```
-exit status 0
+exit status 1
 
 
-Arg - not test passed (verbose)
+Arg - no test passed (verbose)
 ```bash
 go run cmd/testMatrix/main.go -m $'0,5\n0,0' -v
+testMatrix: 2020/02/04 23:45:31 no test passed
 ```
 exit status 0
-
-example verbose: "testMatrix: 2020/02/04 16:42:59 matrix is not triangular"
 
 
 ## Api
