@@ -84,6 +84,13 @@ You can use tests of matrix by api.
 
 For this you send a json for `/testMatrix` api endpoint with test name and matrix for the server test.
 
+### Run
+
+For run the api you can use:
+```sh
+go run cmd/api/main.go
+```
+
 ### Schema
 
 schema used in body for test matrix
