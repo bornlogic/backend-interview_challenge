@@ -25,13 +25,21 @@ format used is csv, example:
  [1,2,3]]        1,2,3
 ```
 
+### Install
+
+for build testMatrix you can use:
+```sh
+$ make build
+```
+and this generate the binary `testMatrix` for usage
+
 ### Usage
 
 `exit 1` -> means test fails
 
 `exit 0` -> means test success or no test passed
 
-for more you can use `--help` flag:
+for more information you can use `-h|--help` flag:
 ```
 Usage of testMatrix:
   -m value
@@ -50,21 +58,21 @@ Usage of testMatrix:
 
 Stdin - matrix is triangular
 ```sh
-$ echo -e '0,5\n0,0' | go run cmd/testMatrix/main.go --triangular
+$ echo -e '0,5\n0,0' | testMatrix --triangular
 ```
 exit status 0
 
 
 Stdin - matrix is not triangular
 ```sh
-$ echo -e '0,5\n1,0' | go run cmd/testMatrix/main.go --triangular
+$ echo -e '0,5\n1,0' | testMatrix -t
 ```
 exit status 1
 
 
 Arg - matrix is not triangular (verbose)
 ```bash
-$ go run cmd/testMatrix/main.go -t --matrix $'0,5\n1,0' -v
+$ testMatrix -t --matrix $'0,5\n1,0' -v
 testMatrix: 2020/02/04 16:42:59 matrix is not triangular
 ```
 exit status 1
@@ -72,7 +80,7 @@ exit status 1
 
 Arg - no test passed (verbose)
 ```bash
-$ go run cmd/testMatrix/main.go -m $'0,5\n0,0' -v
+$ testMatrix -m $'0,5\n0,0' -v
 testMatrix: 2020/02/04 23:45:31 no test passed
 ```
 exit status 0
@@ -88,7 +96,12 @@ For this you send a json for `/testMatrix` api endpoint with test name and matri
 
 For run the api you can use:
 ```sh
-go run cmd/api/main.go
+$ make run
+```
+
+For run the api in another port you can use (default is 3000):
+```sh
+$ make run args="--port=:8080"
 ```
 
 ### Schema
@@ -159,4 +172,29 @@ Missing test name - returns 400 and a quoted message
 ```sh
 $ curl http://127.0.0.1:3000/testMatrix --data '{"matrix": [[1,2,3], [0,1,1], [1,0,1]], "testName": ""}' -v
 "missing test name"
+```
+
+## Development
+
+Some useful explains about development
+
+### Requirements
+
+- docker
+
+### Test
+
+run all tests
+```sh
+make test
+```
+
+run with args
+```sh
+make test args="cmd/testMatrix/main_test.go -run IsTriangular -v"
+```
+
+run benchmark
+```sh
+make test args="./... -bench IsTriangular"
 ```
