@@ -70,7 +70,7 @@ $ echo -e '0,5\n1,0' | testMatrix -t
 exit status 1
 
 
-Arg - matrix is not triangular (verbose)
+Args - matrix is not triangular (verbose)
 ```bash
 $ testMatrix -t --matrix $'0,5\n1,0' -v
 testMatrix: 2020/02/04 16:42:59 matrix is not triangular
@@ -78,7 +78,7 @@ testMatrix: 2020/02/04 16:42:59 matrix is not triangular
 exit status 1
 
 
-Arg - no test passed (verbose)
+Args - no test passed (verbose)
 ```bash
 $ testMatrix -m $'0,5\n0,0' -v
 testMatrix: 2020/02/04 23:45:31 no test passed
