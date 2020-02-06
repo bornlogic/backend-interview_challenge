@@ -10,7 +10,7 @@ shell:
 build:
 	$(run) go build -o testMatrix cmd/testMatrix/main.go
 
-run:
+serve:
 	$(run) go run cmd/api/main.go $(args)
 
 test:

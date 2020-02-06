@@ -96,12 +96,12 @@ For this you send a json for `/testMatrix` api endpoint with test name and matri
 
 For run the api you can use:
 ```sh
-$ make run
+$ make serve
 ```
 
 For run the api in another port you can use (default is 3000):
 ```sh
-$ make run args="--port=:8080"
+$ make serve args="--port=:8080"
 ```
 
 ### Schema
