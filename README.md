@@ -131,6 +131,7 @@ schema used in body for post in api
 spec: https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
 
 ```json
+
 {
 	"matrix": {
 		"type": "array",
@@ -138,13 +139,13 @@ spec: https://github.com/NeowayLabs/jsonschema/blob/master/docs/spec.md
 		"format": {
 			"type": "array",
 			"format": {
-				"type": "int",
+				"type": "int"
 			}
 		}
 	},
 	"testName": {
 		"type": "string",
-		"required": true,
+		"required": true
 	}
 }
 ```
