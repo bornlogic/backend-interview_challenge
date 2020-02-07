@@ -83,9 +83,14 @@ $ echo -e '0,5\n0,0' | testMatrix --triangular
 exit status 0
 
 
-Stdin - matrix is not triangular
+Stdin - matrix is not triangular (verbose)
 ```sh
-$ echo -e '0,5\n1,0' | testMatrix -t
+$ cat <<EOF | testMatrix --triangular --verbose
+> 1,2,3
+> 1,2,3
+> 1,2,3
+> EOF
+testMatrix: 2020/02/06 23:36:03 matrix is not triangular
 ```
 exit status 1
 
