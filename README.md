@@ -87,27 +87,27 @@ $ cat <<EOF | testMatrix --triangular --verbose
 > EOF
 testMatrix: 2020/02/06 23:36:03 matrix is triangular
 ```
-exit status 0
+`exit status 0`
 
 Stdin - matrix is not triangular (verbose)
 ```sh
 $ echo -e "1,2,3\n1,2,3\n1,2,3" | testMatrix -t -v
 testMatrix: 2020/02/06 23:36:03 matrix is not triangular
 ```
-exit status 1
+`exit status 1`
 
 Args - matrix is not triangular
 ```bash
 $ testMatrix -t --matrix $'0,5\n1,0'
 ```
-exit status 1
+`exit status 1`
 
 Args - no test passed (verbose)
 ```bash
 $ testMatrix -m $'0,5\n0,0' -v
 testMatrix: 2020/02/04 23:45:31 no test passed
 ```
-exit status 0
+`exit status 0`
 
 
 ## Api
