@@ -55,11 +55,13 @@ $ go get github.com/iuryfukuda/ibcc/cmd/testMatrix
 
 ### Usage
 
+you can pass an array by stdin or by args
+
 `exit 1` -> means test fails
 
 `exit 0` -> means test success or no test passed
 
-for more information you can use `-h|--help` flag:
+for more information you can use `-h|--help`:
 ```
 Usage of testMatrix:
   -m value
