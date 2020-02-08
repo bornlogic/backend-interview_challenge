@@ -7,7 +7,7 @@ run = docker run --net=host -it -v $(PWD):$(workdir) -w $(workdir) --rm $(img)
 shell:
 	$(run) sh
 
-build:
+testMatrix:
 	$(run) go build -o testMatrix cmd/testMatrix/main.go
 
 serve:
