@@ -76,20 +76,20 @@ func (m Matrix) GetRow(index int) (row []int, err error) {
 }
 
 // IsSquare TODO: Implement tests
-func (m Matrix) isSquare() bool {
-	return false
+func (m Matrix) IsSquared() bool {
+	return m.Valid() && m.Cols() == m.Rows()
 }
 
 // TypeOfMatrix TODO: Implement tests
 func (m Matrix) TypeOfMatrix() string {
-	if !m.isSquare() {
+	if !m.IsSquared() {
 		return "Matrix isen`t a valid Square Matrix"
 	}
 
 	if m.isUpperTriangular() {
 		return "Upper Triangular"
 	}
-	if m.isLowerTriangular() {
+	if m.IsLowerTriangular() {
 		return "Lower Triangular"
 	}
 	return "Isen`t Triangular"
@@ -97,13 +97,13 @@ func (m Matrix) TypeOfMatrix() string {
 
 // isUpperTriangular TODO: Implement tests
 func (m Matrix) isUpperTriangular() bool {
-	if !m.isSquare() {
+	if !m.IsSquared() {
 		return false
 	}
 
-	for i := 0; i < int(m[0]); i++ {
-		for j := i + 1; j < int(m[1]); j++ {
-			if m[i] != 0 {
+	for i := 1; i < m.Cols(); i++ {
+		for j := 0; j < i; j++ {
+			if m.At(i, j) != 0 {
 				return false
 			}
 		}
@@ -112,15 +112,15 @@ func (m Matrix) isUpperTriangular() bool {
 	return true
 }
 
-// isLowerTriangular TODO: Implement tests
-func (m Matrix) isLowerTriangular() bool {
-	if m.isSquare() {
+// IsLowerTriangular TODO: Implement tests
+func (m Matrix) IsLowerTriangular() bool {
+	if m.IsSquared() {
 		return false
 	}
 
-	for i := 0; i < int(m[0]); i++ {
-		for j := i + 1; j < int(m[1]); j++ {
-			if m[j] != 0 {
+	for i := 0; i < m.Cols(); i++ {
+		for j := i + 1; j < m.Rows(); j++ {
+			if m.At(i, j) != 0 {
 				return false
 			}
 		}
