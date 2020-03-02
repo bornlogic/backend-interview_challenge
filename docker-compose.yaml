@@ -1,0 +1,23 @@
+version: "3.7"
+x-app-container:
+  &app-container
+  build: .
+  env_file:
+    - ./.env
+  volumes:
+    - .:/usr/src/app
+  depends_on:
+    - db
+
+services:
+  app:
+    << : *app-container
+    ports:
+     - "8080:80"
+  db:
+    image: postgres:10
+    container_name: interview-db
+
+networks:
+  default:
+    driver: bridge
