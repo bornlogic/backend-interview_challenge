@@ -1,4 +1,4 @@
-package triangularmatrix
+package matrix
 
 func GenUpperTriangularMatrix(s int) Matrix {
 	return make(Matrix, 2)
