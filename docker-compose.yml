@@ -3,7 +3,7 @@ x-app-container:
   &app-container
   build: .
   env_file:
-    - ./.env
+    - ./configurations/.env
   volumes:
     - .:/usr/src/app
   depends_on:
