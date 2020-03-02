@@ -2,9 +2,28 @@ package triangularmatrix
 
 import "fmt"
 
-type Matrix []float64
-type Row []float64
+type Matrix []int
+type Row []int
 type Builder []Row
+
+var DEBUG bool = false
+
+/*
+ * Provide `true` if you want errors to panic
+ */
+func SetDebug(debug bool) {
+	DEBUG = debug
+}
+
+func generateError(message string) (err error) {
+	if DEBUG {
+		panic(message)
+	} else {
+		err = fmt.Errorf(message)
+	}
+
+	return
+}
 
 // Rows TODO: Implement tests
 func (m Matrix) Rows() int {
@@ -33,7 +52,7 @@ func (m Matrix) String() string {
 }
 
 // At TODO: Implement tests
-func (m Matrix) At(row, col int) float64 {
+func (m Matrix) At(row, col int) int {
 	return m[m.IndexFor(row, col)]
 }
 
@@ -43,7 +62,7 @@ func (m Matrix) IndexFor(row, col int) int {
 }
 
 // GetRow TODO: Implement tests
-func (m Matrix) GetRow(index int) (row []float64, err error) {
+func (m Matrix) GetRow(index int) (row []int, err error) {
 	if index+1 > m.Rows() {
 		err = fmt.Errorf("Row %d is out of matrix", row)
 		return
@@ -82,8 +101,8 @@ func (m Matrix) isUpperTriangular() bool {
 		return false
 	}
 
-	for i := 0; len(m); i++ {
-		for j := i + 1; len(m); j++ {
+	for i := 0; i < int(m[0]); i++ {
+		for j := i + 1; j < int(m[i]); j++ {
 			if m[i][j] != 0 {
 				return false
 			}
@@ -99,12 +118,13 @@ func (m Matrix) isLowerTriangular() bool {
 		return false
 	}
 
-	for i := 0; len(m); i++ {
-		for j := i + 1; len(m); j++ {
+	for i := 0; i < int(m[0]); i++ {
+		for j := i + 1; j < int(m[i]); j++ {
 			if m[i][j] != 0 {
 				return false
 			}
 		}
 	}
+
 	return true
 }
