@@ -258,6 +258,28 @@ func TestIsUpperTriangular(t *testing.T) {
 		t.Errorf("Matrix should be upper triangular")
 	}
 }
+
+func TestIsUpperTriangular2(t *testing.T) {
+	/** Ex Upper Triangular Matrix
+		1 4 1
+		0 6 4
+		0 0 1
+	**/
+	m1, err := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 4, 1},
+			matrix.Row{0, 6, 4},
+			matrix.Row{0, 0, 1},
+		},
+	)
+	if err != nil {
+		t.Errorf("You passed a 0x0 or 1x0 matrix.")
+	}
+	r := m1.IsUpperTriangular()
+	if !r {
+		t.Errorf("Matrix should be upper triangular")
+	}
+}
 func TestIsLowerTriangular(t *testing.T) {
 	/** Ex Lower Triangular Matrix
 		1 0 0
@@ -280,4 +302,80 @@ func TestIsLowerTriangular(t *testing.T) {
 		t.Errorf("Matrix should be lower triangular")
 	}
 }
-func TestIsNotValid(t *testing.T) {}
+func TestIsLowerTriangular2(t *testing.T) {
+	/** Ex Lower Triangular Matrix
+		1 0 0
+		2 8 0
+		4 9 7
+	**/
+	m1, err := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 0, 0},
+			matrix.Row{2, 8, 0},
+			matrix.Row{4, 9, 7},
+		},
+	)
+	if err != nil {
+		t.Errorf("You passed a 0x0 or 1x0 matrix.")
+	}
+
+	r := m1.IsLowerTriangular()
+
+	if !r {
+		t.Errorf("Matrix should be lower triangular")
+	}
+}
+func TestTypeOfMatrixLower(t *testing.T) {
+	m1, _ := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 0, 0},
+			matrix.Row{2, 8, 0},
+			matrix.Row{4, 9, 7},
+		},
+	)
+
+	if m1.TypeOfMatrix() != "Lower Triangular" {
+		t.Errorf("String shoubd be 'Lower Triangular'")
+	}
+}
+
+func TestTypeOfMatrixUpper(t *testing.T) {
+	m1, _ := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 4, 1},
+			matrix.Row{0, 6, 4},
+			matrix.Row{0, 0, 1},
+		},
+	)
+
+	if m1.TypeOfMatrix() != "Upper Triangular" {
+		t.Errorf("String shoubd be 'Upper Triangular'")
+	}
+}
+
+func TestTypeOfMatrixNoTriangular(t *testing.T) {
+	m1, _ := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 4, 1},
+			matrix.Row{1, 6, 4},
+			matrix.Row{0, 1, 1},
+		},
+	)
+
+	if m1.TypeOfMatrix() != "Isen`t Triangular" {
+		t.Errorf("String shoubd be 'Isen`t Triangular'")
+	}
+}
+
+func TestTypeOfMatrixNoSquared(t *testing.T) {
+	m1, _ := matrix.Build(
+		matrix.Builder{
+			matrix.Row{1, 4, 1},
+			matrix.Row{1, 6, 4},
+		},
+	)
+
+	if m1.TypeOfMatrix() != "Matrix isen`t a valid Squared Matrix" {
+		t.Errorf("String shoubd be 'Matrix isen`t a valid Squared Matrix'")
+	}
+}

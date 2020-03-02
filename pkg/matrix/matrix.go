@@ -94,7 +94,7 @@ func (m Matrix) IsSquared() bool {
 	return m.Valid() && m.Cols() == m.Rows()
 }
 
-// IsUpperTriangular TODO: Implement tests
+// IsUpperTriangular
 func (m Matrix) IsUpperTriangular() bool {
 	if !m.IsSquared() {
 		return false
@@ -111,7 +111,7 @@ func (m Matrix) IsUpperTriangular() bool {
 	return true
 }
 
-// IsLowerTriangular TODO: Implement tests
+//IsLowerTriangular
 func (m Matrix) IsLowerTriangular() bool {
 	if !m.IsSquared() {
 		return false
@@ -131,7 +131,7 @@ func (m Matrix) IsLowerTriangular() bool {
 // TypeOfMatrix TODO: Implement tests
 func (m Matrix) TypeOfMatrix() string {
 	if !m.IsSquared() {
-		return "Matrix isen`t a valid Square Matrix"
+		return "Matrix isen`t a valid Squared Matrix"
 	}
 
 	if m.IsUpperTriangular() {
