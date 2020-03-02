@@ -8,9 +8,6 @@ type Builder []Row
 
 var DEBUG bool = false
 
-/*
- * Provide `true` if you want errors to panic
- */
 func SetDebug(debug bool) {
 	DEBUG = debug
 }
@@ -25,12 +22,12 @@ func generateError(message string) (err error) {
 	return
 }
 
-// Rows TODO: Implement tests
+//Rows
 func (m Matrix) Rows() int {
 	return int(m[0])
 }
 
-// Cols TODO: Implement tests
+//Cols
 func (m Matrix) Cols() int {
 	return int(m[1])
 }
@@ -51,17 +48,14 @@ func (m Matrix) String() string {
 	return output
 }
 
-// At TODO: Implement tests
 func (m Matrix) At(row, col int) int {
 	return m[m.IndexFor(row, col)]
 }
 
-// IndexFor TODO: Implement tests
 func (m Matrix) IndexFor(row, col int) int {
 	return row*int(m[1]) + col + 2
 }
 
-// GetRow TODO: Implement tests
 func (m Matrix) GetRow(index int) (row []int, err error) {
 	if index+1 > m.Rows() {
 		err = fmt.Errorf("Row %d is out of matrix", row)
@@ -71,32 +65,37 @@ func (m Matrix) GetRow(index int) (row []int, err error) {
 	for i := 0; i < m.Cols(); i++ {
 		row = append(row, m.At(index, i))
 	}
-
 	return
 }
 
-// IsSquare TODO: Implement tests
+func (m Matrix) Valid() bool {
+	return len(m) > 2 && len(m) == int(m[0])*int(m[1])+2
+}
+
+func (m Matrix) EqualTo(other Matrix) bool {
+	for i := 0; i < len(m); i++ {
+		if m[i] != other[i] {
+			return false
+		}
+	}
+
+	return true
+}
+
+func (m Matrix) SameDimensions(other Matrix) bool {
+	if !m.Valid() || !other.Valid() {
+		return false
+	}
+
+	return m[0] == other[0] && m[1] == other[1]
+}
+
 func (m Matrix) IsSquared() bool {
 	return m.Valid() && m.Cols() == m.Rows()
 }
 
-// TypeOfMatrix TODO: Implement tests
-func (m Matrix) TypeOfMatrix() string {
-	if !m.IsSquared() {
-		return "Matrix isen`t a valid Square Matrix"
-	}
-
-	if m.isUpperTriangular() {
-		return "Upper Triangular"
-	}
-	if m.IsLowerTriangular() {
-		return "Lower Triangular"
-	}
-	return "Isen`t Triangular"
-}
-
-// isUpperTriangular TODO: Implement tests
-func (m Matrix) isUpperTriangular() bool {
+// IsUpperTriangular TODO: Implement tests
+func (m Matrix) IsUpperTriangular() bool {
 	if !m.IsSquared() {
 		return false
 	}
@@ -114,7 +113,7 @@ func (m Matrix) isUpperTriangular() bool {
 
 // IsLowerTriangular TODO: Implement tests
 func (m Matrix) IsLowerTriangular() bool {
-	if m.IsSquared() {
+	if !m.IsSquared() {
 		return false
 	}
 
@@ -129,38 +128,19 @@ func (m Matrix) IsLowerTriangular() bool {
 	return true
 }
 
-/*
- * A matrix is valid if it has rows, columns and if all its rows have the same
- * amount of columns.
- */
-func (m Matrix) Valid() bool {
-	return len(m) > 2 && len(m) == int(m[0])*int(m[1])+2
-}
-
-/*
- * Tells if two matrices have the same dimensions and same
- * values in each cell.
- */
-func (m Matrix) EqualTo(other Matrix) bool {
-	for i := 0; i < len(m); i++ {
-		if m[i] != other[i] {
-			return false
-		}
+// TypeOfMatrix TODO: Implement tests
+func (m Matrix) TypeOfMatrix() string {
+	if !m.IsSquared() {
+		return "Matrix isen`t a valid Square Matrix"
 	}
 
-	return true
-}
-
-/*
- *
- * True if both matrices are valid and have the same dimensions
- */
-func (m Matrix) SameDimensions(other Matrix) bool {
-	if !m.Valid() || !other.Valid() {
-		return false
+	if m.IsUpperTriangular() {
+		return "Upper Triangular"
 	}
-
-	return m[0] == other[0] && m[1] == other[1]
+	if m.IsLowerTriangular() {
+		return "Lower Triangular"
+	}
+	return "Isen`t Triangular"
 }
 
 //Build
