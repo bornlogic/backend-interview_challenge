@@ -28,6 +28,11 @@ func (a *App) Initialize(user, password, dbname string) {
 	a.Router = mux.NewRouter()
 }
 
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(http.StatusOK)
+}
+
 func (a *App) Run(addr string) {
-    http.ListenAndServe(addr, a.Router)
+	a.Router.HandleFunc("/", HomeHandler)
+    log.Fatal(http.ListenAndServe(addr, a.Router))
 }
