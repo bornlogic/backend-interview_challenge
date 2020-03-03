@@ -4,7 +4,7 @@ services:
     container_name: full_app_test
     build:
       context: .
-      dockerfile: ./Dockerfile.test
+      dockerfile: ./DockerfileTest
     env_file:
       - ./configurations/.env
     volumes:
