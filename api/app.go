@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/goxrilla/mux"
+	"github.com/gorilla/mux"
 )
 
 type App struct {
@@ -12,6 +12,22 @@ type App struct {
 	DB     *sql.DB
 }
 
-func (a *App) Initialize(user, password, dbname string) {}
+func (a *App) Initialize(user, password, dbname string) {
+	connectionString := fmt.Sprintf(
+		"user=%s password=%s dbname=%s sslmode=disable",
+		user,
+		password,
+		dbname
+	)
 
-func (a *App) Run(addr string) {}
+	var err error
+	a.DB, err = sql.Open("postgres", connectionString)
+	if err != nil {
+		log.Fatal(err)
+	}
+	a.Router = mux.NewRouter()
+}
+
+func (a *App) Run(addr string) {
+    http.ListenAndServe(addr, a.Router)
+}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/marciusvinicius/Interview-Backend-Code-Challenge/pkg/matrix"
 )
 
 type Member struct {
