@@ -1,4 +1,4 @@
-module github.com/marciusvinicius/InterView-Backend-Code
+module github.com/marciusvinicius/Interview-Backend-Code-Challenge
 
 go 1.12
 

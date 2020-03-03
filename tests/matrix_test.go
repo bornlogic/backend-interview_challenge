@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	"github.com/marciusvinicius/InterView-Backend-Code/pkg/matrix"
+	"github.com/marciusvinicius/Interview-Backend-Code-Challenge/pkg/matrix"
 )
 
 func TestRows(t *testing.T) {
@@ -367,6 +367,7 @@ func TestTypeOfMatrixNoTriangular(t *testing.T) {
 	}
 }
 
+//TODO: Check english
 func TestTypeOfMatrixNoSquared(t *testing.T) {
 	m1, _ := matrix.Build(
 		matrix.Builder{

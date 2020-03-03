@@ -13,7 +13,7 @@ services:
   app:
     << : *app-container
     ports:
-     - "8080:80"
+     - "8000:80"
   db:
     image: postgres:10
     container_name: interview-db
