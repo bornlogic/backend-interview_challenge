@@ -1,10 +1,13 @@
-package main
+package api
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
+	_ "github.com/lib/pq"
 )
 
 type App struct {
@@ -13,11 +16,10 @@ type App struct {
 }
 
 func (a *App) Initialize(user, password, dbname string) {
-	connectionString := fmt.Sprintf(
-		"user=%s password=%s dbname=%s sslmode=disable",
+	connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
 		user,
 		password,
-		dbname
+		dbname,
 	)
 
 	var err error
@@ -29,10 +31,11 @@ func (a *App) Initialize(user, password, dbname string) {
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-    w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+
 }
 
 func (a *App) Run(addr string) {
 	a.Router.HandleFunc("/", HomeHandler)
-    log.Fatal(http.ListenAndServe(addr, a.Router))
+	log.Fatal(http.ListenAndServe(addr, a.Router))
 }
