@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
+	services "github.com/marciusvinicius/Interview-Backend-Code-Challenge/api/services"
 )
 
 type App struct {
@@ -16,7 +17,8 @@ type App struct {
 }
 
 func (a *App) Initialize(user, password, dbname string) {
-	connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
+	connectionString := fmt.Sprintf(
+		"user=%s password=%s dbname=%s sslmode=disable",
 		user,
 		password,
 		dbname,
@@ -31,8 +33,9 @@ func (a *App) Initialize(user, password, dbname string) {
 }
 
 func (a *App) Run(addr string) {
-	a.Router.HandleFunc("/api/members", GetMembers)
-	a.Router.HandleFunc("/api/members/invite", InviteMember)
-	a.Router.HandleFunc("/api/members/authenticate", Authenticate)
+	a.Router.HandleFunc("/api/members", services.GetMembers)
+	a.Router.HandleFunc("/api/members/invite", services.InviteMember)
+	a.Router.HandleFunc("/api/members/authenticate", services.Authenticate)
+	a.Router.HandleFunc("/api/whereistriangular", services.WhereIsTriangular).Methods("POST")
 	log.Fatal(http.ListenAndServe(addr, a.Router))
 }
