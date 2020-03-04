@@ -30,12 +30,9 @@ func (a *App) Initialize(user, password, dbname string) {
 	a.Router = mux.NewRouter()
 }
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
-}
-
 func (a *App) Run(addr string) {
-	a.Router.HandleFunc("/", HomeHandler)
+	a.Router.HandleFunc("/api/members", GetMembers)
+	a.Router.HandleFunc("/api/members/invite", InviteMember)
+	a.Router.HandleFunc("/api/members/authenticate", Authenticate)
 	log.Fatal(http.ListenAndServe(addr, a.Router))
 }
