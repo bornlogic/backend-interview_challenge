@@ -1,8 +1,13 @@
 package api
 
-// func (m *entities.Member) GetMember(db *sql.DB) error {
-// 	return errors.New("Not implemented")
-// }
+import (
+	"database/sql"
+	"errors"
+)
+
+func (m *entities.Member) GetMember(db *sql.DB) error {
+	return errors.New("Not implemented")
+}
 
 // func (m *entities.Member) UpdateMember(db *sql.DB) error {
 // 	return errors.New("Not implemented")

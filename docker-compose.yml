@@ -7,16 +7,22 @@ x-app-container:
   volumes:
     - .:/usr/src/app
   depends_on:
-    - db
+    - mongo
 
 services:
   app:
     << : *app-container
     ports:
      - "8000:80"
-  db:
-    image: postgres:10
-    container_name: interview-db
+  mongo:
+    image: mongo
+    env_file:
+      - ./configurations/.env
+      
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/data:/data/db
 
 networks:
   default:
