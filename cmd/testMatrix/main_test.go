@@ -17,9 +17,9 @@ func TestIsTriangular(t *testing.T) {
 
 	if err := cmd.Run(); err != nil {
 		if exitError, ok := err.(*exec.ExitError); ok {
-			t.Logf("exit code: [%d]\n%s", exitError.ExitCode(), err)
+			t.Fatalf("exit code: [%d]\n%s", exitError.ExitCode(), err)
 		} else {
-			t.Logf("another err: %s", err)
+			t.Fatalf("unexpected err: %s", err)
 		}
 	}
 	t.Logf("stdout:\n%q\nstderr:\n%q", out.String(), outErr.String())
