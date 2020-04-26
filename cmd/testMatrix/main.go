@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/iuryfukuda/ibcc/matrix"
+	"github.com/zbioe/ibcc/matrix"
 )
 
 var Matrix matrix.Matrix

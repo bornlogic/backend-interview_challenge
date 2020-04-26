@@ -50,7 +50,7 @@ $ sudo mv testMatrix /usr/local/bin
 Or you can get directly in this repository with `go`
 
 ```sh
-$ go get github.com/iuryfukuda/ibcc/cmd/testMatrix
+$ go get github.com/zbioe/ibcc/cmd/testMatrix
 ```
 
 ### Usage

@@ -3,8 +3,8 @@ package models_test
 import (
 	"testing"
 
-	"github.com/iuryfukuda/ibcc/api/models"
-	"github.com/iuryfukuda/ibcc/matrix"
+	"github.com/zbioe/ibcc/api/models"
+	"github.com/zbioe/ibcc/matrix"
 )
 
 type testMatrixTest struct {

@@ -1,7 +1,7 @@
 package matrix_test
 
 import (
-	"github.com/iuryfukuda/ibcc/matrix"
+	"github.com/zbioe/ibcc/matrix"
 	"testing"
 )
 

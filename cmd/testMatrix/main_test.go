@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var cmdPath = "github.com/iuryfukuda/ibcc/cmd/testMatrix"
+var cmdPath = "github.com/zbioe/ibcc/cmd/testMatrix"
 
 func TestIsTriangular(t *testing.T) {
 	cmd := exec.Command("go", "run", cmdPath, "-matrix", "1,2\n0,0", "-t", "-v")

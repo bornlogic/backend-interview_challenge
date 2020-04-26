@@ -2,7 +2,7 @@ package models
 
 import (
 	"fmt"
-	"github.com/iuryfukuda/ibcc/matrix"
+	"github.com/zbioe/ibcc/matrix"
 )
 
 // TestMatrix is the main abstraction about tests over matrix

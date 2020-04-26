@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/iuryfukuda/ibcc/api/handlers"
+	"github.com/zbioe/ibcc/api/handlers"
 	"net/http"
 )
 

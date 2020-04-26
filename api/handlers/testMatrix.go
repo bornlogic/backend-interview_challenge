@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/iuryfukuda/ibcc/api/models"
+	"github.com/zbioe/ibcc/api/models"
 	"net/http"
 )
 
